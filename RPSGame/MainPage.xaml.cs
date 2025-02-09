@@ -73,14 +73,29 @@ public partial class MainPage : ContentPage
         playerScoreLabel.Text = $"Player Score: {playerScore}";
         systemScoreLabel.Text = $"System Score: {systemScore}";
 
-        if (playerScore == 50 || systemScore == 50)
+        if (playerScore == 30 || systemScore == 30)
         {
-            NewGame.Text = playerScore == 50 ? "You Win! Start New Game."  : "System Won! Start New Game.";
+            NewGame.Text = playerScore == 30 ? "You Win! Start New Game."  : "System Won! Start New Game.";
+            DisplayAlert("Game Over", playerScore == 30 ? "You Win!" : "System Wins!", "OK");
             Rock.IsEnabled = false;
             Paper.IsEnabled = false;
             Scissors.IsEnabled = false;
+            NewGame.IsEnabled = true;
+            playerScoreLabel.Text = "Player Score: 0";
+            systemScoreLabel.Text = "System Score: 0";
         }
         
+    }
+
+    private void NewGameClicked(object sender, EventArgs e)
+    {
+        playerScore = 0;
+        systemScore = 0;
+        
+        Rock.IsEnabled = true;
+        Paper.IsEnabled = true;
+        Scissors.IsEnabled = true;
+        NewGame.IsEnabled = false;
     }
     
 }

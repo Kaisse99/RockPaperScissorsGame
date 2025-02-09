@@ -23,6 +23,8 @@
                    Grid.Row="1" Grid.Column="0" 
                    HorizontalOptions="Center"
                    Margin="5"
+                    MaximumHeightRequest="500"
+                    MaximumWidthRequest="500"
                    Source="question_mark.png"
                    Aspect="AspectFit"/>
             <Image
@@ -30,6 +32,8 @@
                    Grid.Row="1" Grid.Column="1" 
                    HorizontalOptions="Center"
                    Margin="5"
+                    MaximumHeightRequest="500"
+                    MaximumWidthRequest="500"
                    Source="question_mark.png"
                    Aspect="AspectFit"/>
 
@@ -99,10 +103,11 @@
                     Grid.ColumnSpan="2"
                     BackgroundColor="Navy"
                     TextColor="Azure"
-                    WidthRequest="160"
+                    WidthRequest="190"
                     HeightRequest="60"
                     FontSize="Medium"
                     Text="New Game" 
+                    Clicked="NewGameClicked"
                     IsEnabled="False"/>
                     
         </Grid>
