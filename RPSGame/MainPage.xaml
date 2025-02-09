@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RPSGame.MainPage">
+             x:Class="RPSGame.MainPage"
+             BackgroundColor="Azure">
 
     <ScrollView>
         <Grid RowDefinitions="*,2*,.5*,*,*" ColumnDefinitions="*,*">
             <!--The header label-->
             <Label 
                 Grid.Row="0" Grid.Column="0"
+                Margin="10"
+                Grid.ColumnSpan="2"
                 Text="Rock Paper Scissors Game" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
                 FontSize="Title" 
                 FontAttributes="Bold"/>
 
@@ -17,11 +22,13 @@
                    Grid.Row="1" Grid.Column="0" 
                    HorizontalOptions="Center"
                    Margin="5"
+                   Source="question_mark.png"
                    Aspect="AspectFit"/>
             <Image
                    Grid.Row="1" Grid.Column="1" 
                    HorizontalOptions="Center"
                    Margin="5"
+                   Source="question_mark.png"
                    Aspect="AspectFit"/>
 
             <!--ImageButtons to capture the player's choice-->
@@ -32,13 +39,23 @@
 
                 <ImageButton
                              Grid.Row="0" Grid.Column="0" 
+                             Source="rock_gesture.png"
+                             MaximumHeightRequest="100"
+                             MaximumWidthRequest="100"
                              Aspect="AspectFit" />
                 <ImageButton
                              Grid.Row="0" Grid.Column="1"
+                             Source="paper_gesture.png"
+                             MaximumHeightRequest="100"
+                             MaximumWidthRequest="100"
                              Aspect="AspectFit"/>
                 <ImageButton
                              Grid.Row="0" Grid.Column="2" 
+                             Source="scissors_gesture.png"
+                             MaximumHeightRequest="100"
+                             MaximumWidthRequest="100"
                              Aspect="AspectFit"/>
+                <!--To fix super large images on pc version "WidthHeigthRequest"-->
             </Grid>
 
             <!--Label to show the system's choice-->
@@ -46,22 +63,38 @@
                    Grid.Row="2" Grid.Column="1" 
                    HorizontalOptions="Center" VerticalOptions="Center" 
                    Margin="5"
-                   Text="System's Choice: "/>
+                   Text="System's Choice: "
+                   FontSize="Medium"/>
+            
 
             <!--Labels to show the player's and the system's scores-->
             <Label 
                    Grid.Row="3" Grid.Column="0"                    
-                   Text="Player Score: 0" />
+                   Text="Player Score: 0" 
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+                    
             <Label 
                    Grid.Row="3" Grid.Column="1" 
-                   Text="System Score: 0" />
+                   Text="System Score: 0" 
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
 
             <!--Button to start a new game, initialliy disabled-->
             <Button
+                    x:Name="NewGame"
                     Grid.Row="4" Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Navy"
+                    TextColor="Azure"
+                    WidthRequest="160"
+                    HeightRequest="60"
                     FontSize="Medium"
                     Text="New Game" 
                     IsEnabled="False"/>
+                    
         </Grid>
     </ScrollView>
 

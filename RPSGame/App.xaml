@@ -4,7 +4,11 @@
              xmlns:local="clr-namespace:RPSGame"
              x:Class="RPSGame.App">
     <Application.Resources>
+        
         <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Navy"></Setter>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
