@@ -45,7 +45,7 @@
                              Source="rock_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
-                                Clicked="buttonImageClicked"
+                                Clicked="ButtonImageClicked"
                              Aspect="AspectFit" />
                 <ImageButton
                                 x:Name="Paper"
@@ -53,7 +53,7 @@
                              Source="paper_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
-                                Clicked="buttonImageClicked"
+                                Clicked="ButtonImageClicked"
                              Aspect="AspectFit"/>
                 <ImageButton
                                 x:Name="Scissors"
@@ -61,7 +61,7 @@
                              Source="scissors_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
-                                Clicked="buttonImageClicked"
+                                Clicked="ButtonImageClicked"
                              Aspect="AspectFit"/>
                 <!--To fix super large images on pc version "WidthHeigthRequest"-->
             </Grid>
@@ -79,7 +79,7 @@
             <Label 
                     x:Name="playerScoreLabel"
                    Grid.Row="3" Grid.Column="0"                    
-                   Text="Player Score: 0" 
+                   Text="Player Score: {}" 
                    FontSize="Medium"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
