@@ -72,6 +72,15 @@ public partial class MainPage : ContentPage
         
         playerScoreLabel.Text = $"Player Score: {playerScore}";
         systemScoreLabel.Text = $"System Score: {systemScore}";
+
+        if (playerScore == 50 || systemScore == 50)
+        {
+            NewGame.Text = playerScore == 50 ? "You Win! Start New Game."  : "System Won! Start New Game.";
+            Rock.IsEnabled = false;
+            Paper.IsEnabled = false;
+            Scissors.IsEnabled = false;
+        }
+        
     }
     
 }
