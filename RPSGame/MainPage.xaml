@@ -19,12 +19,14 @@
 
             <!--Image controls to show the player's and the system's choice-->
             <Image
+                    x:Name="playerChoiceImage"
                    Grid.Row="1" Grid.Column="0" 
                    HorizontalOptions="Center"
                    Margin="5"
                    Source="question_mark.png"
                    Aspect="AspectFit"/>
             <Image
+                    x:Name="systemChoiceImage"
                    Grid.Row="1" Grid.Column="1" 
                    HorizontalOptions="Center"
                    Margin="5"
@@ -38,22 +40,28 @@
                 Margin="2">
 
                 <ImageButton
+                                x:Name="Rock"
                              Grid.Row="0" Grid.Column="0" 
                              Source="rock_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
+                                Clicked="buttonImageClicked"
                              Aspect="AspectFit" />
                 <ImageButton
+                                x:Name="Paper"
                              Grid.Row="0" Grid.Column="1"
                              Source="paper_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
+                                Clicked="buttonImageClicked"
                              Aspect="AspectFit"/>
                 <ImageButton
+                                x:Name="Scissors"
                              Grid.Row="0" Grid.Column="2" 
                              Source="scissors_gesture.png"
                              MaximumHeightRequest="100"
                              MaximumWidthRequest="100"
+                                Clicked="buttonImageClicked"
                              Aspect="AspectFit"/>
                 <!--To fix super large images on pc version "WidthHeigthRequest"-->
             </Grid>
@@ -69,6 +77,7 @@
 
             <!--Labels to show the player's and the system's scores-->
             <Label 
+                    x:Name="playerScoreLabel"
                    Grid.Row="3" Grid.Column="0"                    
                    Text="Player Score: 0" 
                    FontSize="Medium"
@@ -76,6 +85,7 @@
                    VerticalOptions="Center"/>
                     
             <Label 
+                    x:Name="systemScoreLabel"
                    Grid.Row="3" Grid.Column="1" 
                    Text="System Score: 0" 
                    FontSize="Medium"
