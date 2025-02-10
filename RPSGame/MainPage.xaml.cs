@@ -18,13 +18,13 @@ public partial class MainPage : ContentPage
             switch (playerChoice)
             {
                 case "Rock":
-                    playerChoiceImage.Source = ImageSource.FromFile($"rock.png");
+                    PlayerChoiceImage.Source = ImageSource.FromFile($"rock.png");
                     break;
                 case "Paper":
-                    playerChoiceImage.Source = ImageSource.FromFile($"paper.png");
+                    PlayerChoiceImage.Source = ImageSource.FromFile($"paper.png");
                     break;
                 case "Scissors":
-                    playerChoiceImage.Source = ImageSource.FromFile($"scissors.png");
+                    PlayerChoiceImage.Source = ImageSource.FromFile($"scissors.png");
                     break;
             }
             int systemChoice = rand.Next(1, 4);
@@ -32,13 +32,16 @@ public partial class MainPage : ContentPage
             switch (systemChoice)
             {
                 case 1:
-                    systemChoiceImage.Source = ImageSource.FromFile($"rock.png");
+                    SystemChoiceImage.Source = ImageSource.FromFile($"rock.png");
+                    SystemChoiceLabel.Text = "System Choice: Rock";
                     break;
                 case 2:
-                    systemChoiceImage.Source = ImageSource.FromFile($"paper.png");
+                    SystemChoiceImage.Source = ImageSource.FromFile($"paper.png");
+                    SystemChoiceLabel.Text = "System Choice: Paper";
                     break;
                 case 3:
-                    systemChoiceImage.Source = ImageSource.FromFile($"scissors.png");
+                    SystemChoiceImage.Source = ImageSource.FromFile($"scissors.png");
+                    SystemChoiceLabel.Text = "System Choice: Scissors";
                     break;
             }
             CompScores(playerChoice, systemChoice);
@@ -62,33 +65,26 @@ public partial class MainPage : ContentPage
             systemScore += 10;
         }
 
-        if ((playerChoice == "Rock" && systemChoice == 1) ||
-            (playerChoice == "Paper" && systemChoice == 2) ||
-            (playerChoice == "Scissors" && systemChoice == 3))
-        {
-            playerScore -= 5 ;
-            systemScore -= 5;
-        }  // if no winner, then both are loosers.
-        
-        playerScoreLabel.Text = $"Player Score: {playerScore}";
-        systemScoreLabel.Text = $"System Score: {systemScore}";
+       
+        PlayerScoreLabel.Text = $"Player Score: {playerScore}";
+        SystemScoreLabel.Text = $"System Score: {systemScore}";
 
         if (playerScore == 30 || systemScore == 30)
         {
-            NewGame.Text = playerScore == 30 ? "You Win! Start New Game."  : "System Won! Start New Game.";
+            NewGame.Text = "Start New Game";
             DisplayAlert("Game Over", playerScore == 30 ? "You Win!" : "System Wins!", "OK");
             Rock.IsEnabled = false;
             Paper.IsEnabled = false;
             Scissors.IsEnabled = false;
             NewGame.IsEnabled = true;
-            playerScoreLabel.Text = "Player Score: 0";
-            systemScoreLabel.Text = "System Score: 0";
         }
         
     }
 
     private void NewGameClicked(object sender, EventArgs e)
     {
+        PlayerScoreLabel.Text = "Player Score: 0";
+        SystemScoreLabel.Text = "System Score: 0";
         playerScore = 0;
         systemScore = 0;
         

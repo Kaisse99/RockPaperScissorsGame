@@ -19,21 +19,25 @@
 
             <!--Image controls to show the player's and the system's choice-->
             <Image
-                    x:Name="playerChoiceImage"
+                    x:Name="PlayerChoiceImage"
                    Grid.Row="1" Grid.Column="0" 
                    HorizontalOptions="Center"
                    Margin="5"
-                    MaximumHeightRequest="500"
-                    MaximumWidthRequest="500"
+                    MaximumHeightRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MaximumWidthRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MinimumHeightRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MinimumWidthRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
                    Source="question_mark.png"
                    Aspect="AspectFit"/>
             <Image
-                    x:Name="systemChoiceImage"
+                    x:Name="SystemChoiceImage"
                    Grid.Row="1" Grid.Column="1" 
                    HorizontalOptions="Center"
                    Margin="5"
-                    MaximumHeightRequest="500"
-                    MaximumWidthRequest="500"
+                    MaximumHeightRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MaximumWidthRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MinimumHeightRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
+                    MinimumWidthRequest="{OnIdiom Desktop=500, Tablet=400, Phone=200}"
                    Source="question_mark.png"
                    Aspect="AspectFit"/>
 
@@ -47,24 +51,24 @@
                                 x:Name="Rock"
                              Grid.Row="0" Grid.Column="0" 
                              Source="rock_gesture.png"
-                             MaximumHeightRequest="100"
-                             MaximumWidthRequest="100"
+                             MaximumHeightRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
+                             MaximumWidthRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
                                 Clicked="ButtonImageClicked"
                              Aspect="AspectFit" />
                 <ImageButton
                                 x:Name="Paper"
                              Grid.Row="0" Grid.Column="1"
                              Source="paper_gesture.png"
-                             MaximumHeightRequest="100"
-                             MaximumWidthRequest="100"
+                             MaximumHeightRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
+                             MaximumWidthRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
                                 Clicked="ButtonImageClicked"
                              Aspect="AspectFit"/>
                 <ImageButton
                                 x:Name="Scissors"
                              Grid.Row="0" Grid.Column="2" 
                              Source="scissors_gesture.png"
-                             MaximumHeightRequest="100"
-                             MaximumWidthRequest="100"
+                             MaximumHeightRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
+                             MaximumWidthRequest="{OnIdiom Desktop=100, Tablet=90, Phone=60}"
                                 Clicked="ButtonImageClicked"
                              Aspect="AspectFit"/>
                 <!--To fix super large images on pc version "WidthHeigthRequest"-->
@@ -72,6 +76,7 @@
 
             <!--Label to show the system's choice-->
             <Label
+                    x:Name="SystemChoiceLabel"
                    Grid.Row="2" Grid.Column="1" 
                    HorizontalOptions="Center" VerticalOptions="Center" 
                    Margin="5"
@@ -81,15 +86,15 @@
 
             <!--Labels to show the player's and the system's scores-->
             <Label 
-                    x:Name="playerScoreLabel"
+                    x:Name="PlayerScoreLabel"
                    Grid.Row="3" Grid.Column="0"                    
-                   Text="Player Score: {}" 
+                   Text="Player Score: 0" 
                    FontSize="Medium"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
                     
             <Label 
-                    x:Name="systemScoreLabel"
+                    x:Name="SystemScoreLabel"
                    Grid.Row="3" Grid.Column="1" 
                    Text="System Score: 0" 
                    FontSize="Medium"
