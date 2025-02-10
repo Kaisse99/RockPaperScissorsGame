@@ -4,6 +4,8 @@ public partial class MainPage : ContentPage
 {
     private int playerScore = 0;
     private int systemScore = 0;
+    private int playerWins = 0;
+    private int systemWins = 0;
     private Random rand = new Random();
     public MainPage()
     {
@@ -27,6 +29,11 @@ public partial class MainPage : ContentPage
     {
         if (sender is ImageButton button)
         {
+            // made so that user not able to click during animation as it cause bugs 
+            Rock.IsEnabled = false;
+            Paper.IsEnabled = false;
+            Scissors.IsEnabled = false;
+            
              await AnimatedButtonImage(button);
             
             string playerChoice = button.StyleId; 
@@ -62,6 +69,8 @@ public partial class MainPage : ContentPage
 
             await Task.WhenAll(BouncingImages(PlayerChoiceImage), BouncingImages(SystemChoiceImage));
             CompScores(playerChoice, systemChoice);
+            
+            
         }
         
     }
@@ -73,6 +82,7 @@ public partial class MainPage : ContentPage
             (playerChoice == "Scissors" && systemChoice == 2))
         {
             playerScore += 10;
+            
         }
 
         if ((playerChoice == "Rock" && systemChoice == 2) ||
@@ -80,22 +90,50 @@ public partial class MainPage : ContentPage
             (playerChoice == "Scissors" && systemChoice == 1))
         {
             systemScore += 10;
+            
         }
 
        
         PlayerScoreLabel.Text = $"Player Score: {playerScore}";
         SystemScoreLabel.Text = $"System Score: {systemScore}";
+        
+        Rock.IsEnabled = true;
+        Paper.IsEnabled = true;
+        Scissors.IsEnabled = true;
 
         if (playerScore == 30 || systemScore == 30)
         {
-            NewGame.Text = "Start New Game";
-            DisplayAlert("Game Over", playerScore == 30 ? "You Win!" : "System Wins!", "OK");
-            Rock.IsEnabled = false;
-            Paper.IsEnabled = false;
-            Scissors.IsEnabled = false;
-            NewGame.IsEnabled = true;
+            if (playerScore == 30)
+            {
+                playerWins++;
+                systemWins = 0;
+            }
+            else if (systemScore == 30)
+            {
+                systemWins++;
+                playerWins = 0;
+            }
+
+            if (playerWins == 2 || systemWins == 2)
+            {
+                DisplayAlert("Match is Over",
+                    playerWins == 2 ? "Player Wins The Match." : "System Wins The Match.", "OK");
+                Rock.IsEnabled = false;
+                Paper.IsEnabled = false;
+                Scissors.IsEnabled = false;
+                NewGame.IsEnabled = false;
+                NewGame.Text = "GAME OVER";
+            }
+            else
+            {
+                NewGame.Text = "Start New Round";
+                DisplayAlert("Round is Over", playerScore == 30 ? "You Win!" : "System Wins!", "OK");
+                Rock.IsEnabled = false;
+                Paper.IsEnabled = false;
+                Scissors.IsEnabled = false;
+                NewGame.IsEnabled = true;
+            }
         }
-        
     }
 
     private void NewGameClicked(object sender, EventArgs e)
