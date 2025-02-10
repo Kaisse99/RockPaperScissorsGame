@@ -10,11 +10,26 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private void ButtonImageClicked(object sender, EventArgs e)
+    private async Task AnimatedButtonImage(ImageButton button)
+    {
+        await button.ScaleTo(1.1, 100, Easing.Linear); 
+        await button.ScaleTo(1.0, 100, Easing.Linear);
+    }
+
+    private async Task BouncingImages(Image image)
+    {
+        await image.TranslateTo(0, -20, 100, Easing.CubicIn); 
+        await image.TranslateTo(0, 0, 100, Easing.CubicOut);   
+        
+    }
+
+    private async void ButtonImageClicked(object sender, EventArgs e)
     {
         if (sender is ImageButton button)
         {
-            string playerChoice = button.StyleId; // or use button x:Name
+             await AnimatedButtonImage(button);
+            
+            string playerChoice = button.StyleId; 
             switch (playerChoice)
             {
                 case "Rock":
@@ -44,6 +59,8 @@ public partial class MainPage : ContentPage
                     SystemChoiceLabel.Text = "System Choice: Scissors";
                     break;
             }
+
+            await Task.WhenAll(BouncingImages(PlayerChoiceImage), BouncingImages(SystemChoiceImage));
             CompScores(playerChoice, systemChoice);
         }
         
